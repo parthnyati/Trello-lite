@@ -1,0 +1,165 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  display: flex;
+  justify-content: space-between;
+  /* align-self: center; */
+  padding: 0 1rem;
+}
+
+.list-container {
+  margin-top: 2em;
+  display: flex;
+  overflow-y: auto;
+  padding: 0 2rem;
+}
+
+.column-container {
+  width: 400px;
+  max-width: 100%;
+  margin: 0 25px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+  background-color: RGBA(255, 255, 255, 0.05);
+}
+
+
+mat-card {
+  margin: 1em;
+  cursor: pointer;
+}
+
+.list {
+  border: RGBA(46, 49, 49, .7) solid 1px;
+  border-radius: 2px;
+}
+
+.list-item {
+  margin: 10px;
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+a {
+  text-decoration: none;
+  color: dodgerblue;
+}
+
+.header-container{
+  width: 100%;
+  text-align: center;
+  background: #1b1b1b;
+}
+
+.mt-2{
+  margin-top: 2rem;
+}
+
+.m-auto-0{
+  margin: auto 0;
+}
+
+.overlay{
+  height: 100%;
+  width: 100%;
+  background: #7575754d;
+  position: fixed;
+  top: 0;
+  display: flex;
+}
+
+.modal{
+  margin: auto;
+  min-width: 250px;
+  background: white;
+  padding: 2rem;
+  color: #000;
+}
+
+.width-100{
+  width: 100%;
+}
+
+.text-align-end{
+  text-align: end;;
+}
+
+.text-align-center{
+  text-align: center;
+}
+
+.height-24{
+  height: 24px;
+}
+
+.float-right {
+  float: right;
+}
+
+.close-modal-button{
+  margin-right: -24px;
+  margin-top: -24px;
+}
+
+.m-1{
+  margin: 1rem;
+}
+
+.m-auto{
+  margin: auto;
+}
+
+.place-holder-container{
+  text-align: center;
+  border: 1px dashed gray;
+  margin: 2rem;
+  height: 20rem;
+  display: flex;
+}
+
+.card-button{
+  position: absolute;
+  right: 0;
+}
+
+.height-42{
+  height: 42px;
+}

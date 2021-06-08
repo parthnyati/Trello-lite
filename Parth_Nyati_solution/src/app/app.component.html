@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="header-container">
+    <h1>{{title}}</h1>
+  </div>
+
+  <div class="mt-2 width-100">
+    <div class="text-align-end m-1">
+      <button class="float-right height-42" mat-raised-button color="accent" (click)="openAddListModal()">
+        <span class="height-24" > ADD LIST </span> <mat-icon>add</mat-icon>
+       </button>
+    </div>
+  </div>
+  <div class="m-1 width-100">
+    <div class="list-container" cdkDropListGroup>
+      <div *ngFor="let list of dataSource; index as i" class="list column-container"  cdkDropList [cdkDropListData]="list.data"
+        (cdkDropListDropped)="onDrop($event, i)"
+      >
+        <h2>
+          <div class="">
+            {{list.name}}
+          </div>
+          <div class="float-right">
+            <button mat-button><mat-icon class="m-auto-0" (click)="removeList(i)">clear</mat-icon></button>
+          </div>
+        </h2>
+        <mat-card cdkDrag [cdkDragData]="item" *ngFor="let item of list.data; index as e" >
+          <mat-card-header class="width-100">
+            <div class="card-button">
+              <button mat-button><mat-icon class="m-auto-0" (click)="removeItem(i,e)">clear</mat-icon></button>
+            </div>
+            <mat-card-title>{{item.title}}</mat-card-title>
+            <mat-card-subtitle>{{item.desc}}</mat-card-subtitle>
+            <mat-card-subtitle>{{item.creation_time | date:'medium'}}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+        <div class="text-align-center m-1">
+          <button mat-raised-button color="primary" class="height-42" (click)="openAddItemModal(i)">ADD ITEM</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="modalVisible" class="overlay">
+  <div class="modal" >
+    <button mat-button (click)="closeModal()" class="float-right close-modal-button"><mat-icon class="m-auto-0">clear</mat-icon> </button>
+    
+    <div *ngIf="modalType === 'newListModal'" class="">
+      <h3> Add List</h3>
+      <mat-form-field appearance="fill" class="width-100">
+        <mat-label>Enter List Name</mat-label>
+        <input matInput [formControl]="newListName" required>
+        <mat-error *ngIf="newListName.invalid">List name is required.</mat-error>
+      </mat-form-field>
+
+      <div class="text-align-end">
+        <button mat-button (click)="closeModal()" >Cancel</button>
+        <button mat-raised-button color="primary" [disabled]=" newListName.invalid" (click)="addList()">Add</button>
+      </div>
+    </div>
+
+    <div *ngIf="modalType === 'newElementModal'" class="">
+      <h3> Add List</h3>
+      <div [formGroup]="itemFormData">
+        <mat-form-field appearance="fill" class="width-100">
+          <mat-label>Enter Item Name</mat-label>
+          <input matInput formControlName="itemName" required>
+          <mat-error *ngIf="newListName.invalid">Item name is required.</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill" class="width-100">
+          <mat-label>Enter Item Description</mat-label>
+          <input matInput formControlName="itemDesc">
+        </mat-form-field>
+      </div>
+
+      <div class="text-align-end">
+        <button mat-button (click)="closeModal()" >Cancel</button>
+        <button mat-raised-button color="primary" [disabled]="itemFormData.invalid" (click)="addItem()" >Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="dataSource.length === 0"class="place-holder-container">
+  <h1 class="m-auto">ADD NEW LIST</h1>
+</div>
